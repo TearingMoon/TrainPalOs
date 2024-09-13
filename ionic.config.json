@@ -1,0 +1,7 @@
+{
+  "name": "TrainPal-OS",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
