@@ -34,12 +34,16 @@ import "@ionic/vue/css/palettes/dark.system.css";
 /* Theme variables */
 import "./theme/variables.css";
 
+import { createPinia } from "pinia";
+
+const pinia = createPinia();
 const app = createApp(App)
   .use(IonicVue, {
     rippleEffect: true,
     mode: "ios",
   })
-  .use(router);
+  .use(router)
+  .use(pinia);
 
 router.isReady().then(() => {
   app.mount("#app");
