@@ -35,6 +35,7 @@ import "@ionic/vue/css/palettes/dark.system.css";
 import "./theme/variables.css";
 
 import { createPinia } from "pinia";
+import ionicStoragePlugin from "./ionicStorage/ionicStoragePlugin";
 
 const pinia = createPinia();
 const app = createApp(App)
@@ -43,7 +44,8 @@ const app = createApp(App)
     mode: "ios",
   })
   .use(router)
-  .use(pinia);
+  .use(pinia)
+  .use(ionicStoragePlugin);
 
 router.isReady().then(() => {
   app.mount("#app");
