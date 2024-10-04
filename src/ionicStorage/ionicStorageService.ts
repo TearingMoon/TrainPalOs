@@ -1,6 +1,7 @@
 import { Storage } from "@ionic/storage";
 
+// Inicializamos el storage y lo exportamos como una promesa para ser usado en los stores
 const storage = new Storage();
-await storage.create();
+const storagePromise = storage.create();
 
-export default storage;
+export default storagePromise;

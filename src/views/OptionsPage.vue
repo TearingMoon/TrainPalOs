@@ -2,29 +2,28 @@
   <ion-page ref="page">
     <ion-content color="light">
       <ion-list lines="full" :inset="true">
-
         <!-- New Exercise -->
         <ion-item :button="true" id="open-exercise-modal">
           <ion-label>New exercise</ion-label>
         </ion-item>
         <ion-modal
           trigger="open-exercise-modal"
+          ref="exercise-modal"
           :presenting-element="$refs.page?.$el"
+          
         >
           <ion-header>
             <ion-toolbar>
               <ion-title>New Exercise</ion-title>
             </ion-toolbar>
           </ion-header>
-          <new-exercise-form></new-exercise-form>
+          <new-exercise-form @form-submitted="$refs['exercise-modal']?.$el.dismiss()"></new-exercise-form>
         </ion-modal>
 
         <!-- New Routine -->
         <ion-item :button="true">
           <ion-label>New routine</ion-label>
         </ion-item>
-
-        
       </ion-list>
       <ion-list lines="full" :inset="true">
         <ion-list-header>Options</ion-list-header>

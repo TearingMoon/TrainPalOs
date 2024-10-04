@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import Routine from "@/models/Routine";
-import storage from "@/ionicStorage/ionicStorageService";
+import storagePromise from "@/ionicStorage/ionicStorageService";
 
 export const routineStore = defineStore("routines", {
   state: () => {
@@ -52,11 +52,13 @@ export const routineStore = defineStore("routines", {
     },
     //#region Storage
     async savePersistentData() {
+      const storage = await storagePromise;
       await storage.set("currentRoutine", this.currentRoutine);
       await storage.set("routines", this.routineList);
       console.log("-- Routines saved to storage --");
     },
     async getPersistentData() {
+      const storage = await storagePromise;
       const currentRoutine = await storage.get("currentRoutine");
       const routines = await storage.get("routines");
       if (currentRoutine) {

@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import User from "@/models/User";
-import storage from "@/ionicStorage/ionicStorageService";
+import storagePromise from "@/ionicStorage/ionicStorageService";
 
 export const userDataStore = defineStore("userData", {
   state: () => {
@@ -21,10 +21,12 @@ export const userDataStore = defineStore("userData", {
       this.savePersistentData();
     },
     async savePersistentData() {
+      const storage = await storagePromise;
       await storage.set("user", this.user);
       console.log("-- User data saved to storage --");
     },
     async getPersistentData() {
+      const storage = await storagePromise;
       const user = await storage.get("user");
       if (user) {
         this.user = user;
