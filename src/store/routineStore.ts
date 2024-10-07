@@ -53,9 +53,13 @@ export const routineStore = defineStore("routines", {
     //#region Storage
     async savePersistentData() {
       const storage = await storagePromise;
-      await storage.set("currentRoutine", this.currentRoutine);
-      await storage.set("routines", this.routineList);
-      console.log("-- Routines saved to storage --");
+      try {
+        await storage.set("currentRoutine", this.currentRoutine);
+        await storage.set("routines", this.routineList);
+        console.log("-- Routines saved to storage --");
+      } catch (error) {
+        console.error(error);
+      }
     },
     async getPersistentData() {
       const storage = await storagePromise;

@@ -16,8 +16,12 @@ export const exerciseStore = defineStore("exercises", {
     },
     async savePersistentData() {
       const storage = await storagePromise;
-      await storage.set("user", this.exerciseList);
-      console.log("-- Exercise List saved to storage --");
+      try {
+        await storage.set("user", this.exerciseList);
+        console.log("-- Exercise List saved to storage --");
+      } catch (error) {
+        console.error(error);
+      }
     },
     async getPersistentData() {
       const storage = await storagePromise;

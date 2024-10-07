@@ -22,8 +22,12 @@ export const userDataStore = defineStore("userData", {
     },
     async savePersistentData() {
       const storage = await storagePromise;
-      await storage.set("user", this.user);
-      console.log("-- User data saved to storage --");
+      try {
+        await storage.set("user", this.user);
+        console.log("-- User data saved to storage --");
+      } catch (error) {
+        console.error(error);
+      }
     },
     async getPersistentData() {
       const storage = await storagePromise;

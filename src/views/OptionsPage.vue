@@ -21,6 +21,11 @@
           ></new-exercise-form>
         </ion-modal>
 
+        <!-- Manage Exercises -->
+        <ion-item :button="true" id="open-manage-exercise-modal">
+          <ion-label>Manage exercises</ion-label>
+        </ion-item>
+
         <!-- New Routine -->
         <ion-item :button="true" id="open-routine-modal">
           <ion-label>New routine</ion-label>
